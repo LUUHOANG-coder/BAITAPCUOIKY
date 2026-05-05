@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
+
+:root {
+  --lv-font-serif: "Playfair Display", serif;
+  --lv-font-sans: "Jost", sans-serif;
+  --lv-dark: #19110b;
+}
+
+body {
+  font-family: var(--lv-font-sans);
+  background: #fff;
+  overflow-x: hidden;
+}
+.transition-all {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.small-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.lv-brand-title {
+  font-family: var(--lv-font-serif);
+  letter-spacing: 8px;
+  font-size: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lv-burger {
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  display: inline-block;
+}
+.lv-burger::before,
+.lv-burger::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  left: 0;
+}
+.lv-burger::before {
+  top: -6px;
+}
+.lv-burger::after {
+  bottom: 6px;
+}
+
+/* Hero Banner */
+.hero-section {
+  height: 95vh;
+  background: url("https://vn.louisvuitton.com/images/is/image//content/dam/lv/editorial-content/New-Homepage/2026/central/collections/flight-mode/Women_Flight_Mode_HP_Push_April26_DI3.jpg?wid=2400")
+    center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+.hero-content {
+  z-index: 5;
+}
+.serif-font {
+  font-family: var(--lv-font-serif) !important;
+}
+.ls-3 {
+  letter-spacing: 3px;
+}
+.ls-2 {
+  letter-spacing: 2px;
+}
+.ls-10 {
+  letter-spacing: 15px;
+}
+
+/* Horizontal Scroll Fix */
+.horizontal-scroll-container {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.item-card {
+  width: 280px;
+  cursor: pointer;
+}
+.product-card-item {
+  width: 300px;
+  cursor: pointer;
+}
+
+.img-holder img,
+.product-img-wrap img {
+  transition: transform 0.8s ease;
+}
+.item-card:hover .hover-zoom {
+  transform: scale(1.05);
+}
+
+.product-img-wrap {
+  position: relative;
+}
+.wishlist-btn-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Spotlight Banner */
+.spotlight-box {
+  height: 75vh;
+  background: url("https://vn.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--LVM_FlightMode_Apr26_D_DI3.jpg")
+    center/cover;
+  position: relative;
+}
+.spotlight-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.z-index-2 {
+  z-index: 2;
+}
+
+/* Footer */
+.footer-dark-bg {
+  background-color: var(--lv-dark);
+  color: #767676;
+}
+
+/* Responsive Mobile Fix */
+@media (max-width: 991px) {
+  .lv-brand-title {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+  .display-2 {
+    font-size: 38px;
+  }
+  .spotlight-box {
+    height: 50vh;
+  }
+  .ls-10 {
+    letter-spacing: 5px;
+    font-size: 22px;
+  }
+  /* Cho phép lướt ngang mượt trên mobile */
+  .item-card {
+    width: 70%;
+  }
+  .product-card-item {
+    width: 75%;
+  }
+}

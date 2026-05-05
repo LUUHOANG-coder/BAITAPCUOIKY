@@ -1,0 +1,614 @@
+.lv-navbar {
+  height: 75px;
+  border-bottom: 1px solid #f2f2f2;
+  z-index: 2000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Định dạng chung cho tất cả các nút bấm trên Nav */
+.nav-btn,
+.nav-btn-icon {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.nav-icon {
+  font-size: 18px;
+}
+
+.nav-text {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+/* HIỆU ỨNG KHI RÀ CHUỘT VÀO ICON */
+.nav-btn:hover,
+.nav-btn-icon:hover {
+  color: #c9a050; /* Màu vàng đồng sang trọng */
+  background-color: rgba(201, 160, 80, 0.05);
+  border-radius: 4px;
+}
+
+/* HIỆU ỨNG KHI NHẤN CHUỘT (CLICK) */
+.nav-btn:active,
+.nav-btn-icon:active {
+  transform: scale(0.92); /* Thu nhỏ lại một chút như nút vật lý */
+  opacity: 0.7;
+}
+
+/* LOGO LOUIS VUITTON TỎA SÁNG */
+.lv-logo {
+  font-family: "serif";
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin: 0;
+  font-weight: 400;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.lv-logo:hover {
+  color: #d4af37;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  transform: scale(1.05);
+}
+
+/* Responsive cho mobile gốc */
+@media (max-width: 768px) {
+  .lv-logo {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+}
+
+/* Lớp nền mờ để tập trung vào Menu mới hiện ra */
+.lv-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1500;
+  backdrop-filter: blur(2px);
+}
+
+/* MENU TRƯỢT TỪ TRÁI QUA */
+.lv-side-menu {
+  position: fixed;
+  top: 0;
+  left: -450px; /* Ban đầu ẩn bên trái */
+  width: 450px;
+  height: 100vh;
+  background: #fff;
+  z-index: 2001;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 40px;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.lv-side-menu.open {
+  left: 0; /* Click vào thì hiện ra */
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.menu-list li {
+  padding: 15px 0;
+  font-size: 18px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: 0.3s;
+}
+
+.menu-list li:hover {
+  color: #c9a050;
+  padding-left: 10px;
+}
+
+/* THANH TÌM KIẾM TRƯỢT TỪ TRÊN XUỐNG */
+.lv-search-full {
+  position: fixed;
+  top: -200px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 2001;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.lv-search-full.open {
+  top: 75px; /* Hiện ngay dưới thanh Navbar */
+}
+
+.search-input-field {
+  width: 100%;
+  border: none;
+  font-size: 24px;
+  font-weight: 300;
+  outline: none;
+}
+
+.btn-close-drawer,
+.btn-close-search {
+  background: none;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.lv-drawer {
+  position: fixed;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  z-index: 2001;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Drawer bên trái cho Menu */
+.side-menu {
+  width: 800px; /* Tăng chiều rộng lên */
+  left: -800px;
+}
+.side-menu.open {
+  left: 0;
+}
+
+/* Drawer bên phải cho Đăng nhập */
+.login-drawer {
+  right: -400px;
+}
+.login-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+/* ĐỊNH DẠNG FORM ĐĂNG NHẬP */
+.lv-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.lv-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.lv-input:focus {
+  border-color: #000;
+}
+
+.lv-btn-dark {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.lv-btn-dark:hover {
+  opacity: 0.8;
+}
+
+.lv-btn-outline {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 15px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.lv-btn-outline:hover {
+  background: #f8f8f8;
+}
+
+.btn-close-drawer {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu-categories {
+  width: 300px;
+}
+
+.menu-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list-items li {
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #f8f8f8;
+  transition: 0.3s;
+}
+
+.menu-list-items li.active-cat {
+  font-weight: bold;
+  color: #c9a050;
+  border-left: 3px solid #c9a050;
+  padding-left: 10px;
+}
+
+/* Card sản phẩm */
+.prod-card {
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.prod-card:hover {
+  transform: translateY(-5px);
+}
+
+.prod-card img {
+  height: 150px;
+  object-fit: contain;
+  background: #f6f6f6;
+  border-radius: 4px;
+}
+
+.lv-mega-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  z-index: 3000;
+  transition: 0.5s ease-in-out;
+}
+.lv-mega-menu.open {
+  left: 0;
+}
+
+.menu-left-sidebar {
+  width: 350px;
+  border-right: 1px solid #eee;
+}
+
+.menu-cat-item {
+  padding: 15px 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #666;
+}
+.menu-cat-item.active,
+.menu-cat-item:hover {
+  color: #000;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+/* Card sản phẩm có hiệu ứng xoay */
+.product-suggest-card .img-box {
+  position: relative;
+  background: #f6f6f6;
+  height: 250px;
+  overflow: hidden;
+}
+
+.img-v1,
+.img-v2 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.6s ease;
+}
+
+.img-v2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.product-suggest-card:hover .img-v1 {
+  opacity: 0;
+  transform: scale(1.1);
+}
+.product-suggest-card:hover .img-v2 {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.btn-quickview {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 11px;
+  transition: 0.3s;
+}
+
+.product-suggest-card:hover .btn-quickview {
+  bottom: 0;
+}
+
+.close-x {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Container chứa 2 nút chính */
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Nút MUA HÀNG */
+.btn-buy {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-buy:hover {
+  background-color: #333;
+}
+
+/* Nút Trái tim */
+.btn-wishlist {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wishlist.active {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.btn-wishlist:hover {
+  background-color: #f9f9f9;
+}
+
+/* Link Xem chi tiết nhỏ phía dưới */
+.btn-detail-link {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+}
+.wishlist-drawer {
+  position: fixed;
+  right: -450px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  z-index: 4000;
+  transition: 0.4s ease;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.wishlist-drawer.open {
+  right: 0;
+}
+
+.wishlist-item,
+.wishlist-item-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.btn-buy-now-mini {
+  background: black;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.btn-buy-small {
+  width: 100%;
+  background: #eee;
+  color: black;
+  border: none;
+  padding: 8px;
+  font-size: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-buy-black {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Badge số lượng trên icon trái tim */
+.badge-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: black;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.btn-heart-active {
+  border: 1px solid #ddd;
+  background: white;
+  padding: 0 15px;
+}
+
+.btn-link-view {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+}
+
+/* Hiệu ứng khi nhấn trái tim */
+.btn-heart-inside-menu:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+/* Ép toàn bộ các phần tử con không vượt quá chiều rộng cha */
+.lv-navbar *,
+.lv-mega-menu *,
+.wishlist-drawer * {
+  max-width: 100%;
+}
+
+/* Quan trọng: Để các bảng chọn không bị tràn */
+.lv-mega-menu {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+/* 
+  HEADER & LOGO TRÊN MOBILE (LUÔN ĐỂ DƯỚI CÙNG)
+   */
+@media (max-width: 991px) {
+  /* 1. Đặt thanh Navbar làm gốc để canh giữa */
+  .lv-navbar {
+    position: relative !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 10px;
+  }
+
+  /* 2. Ép Logo nằm chính giữa tuyệt đối, không bị các nút đẩy */
+  .lv-logo {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 16px !important;
+    letter-spacing: 2px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+
+  /* 3. Ẩn chữ "MENU" và "TÌM KIẾM", chỉ giữ lại Icon */
+  .nav-text {
+    display: none !important;
+  }
+
+  /* 4. Thu nhỏ khoảng cách các nút để gọn gàng hơn */
+  .nav-btn,
+  .nav-btn-icon {
+    padding: 8px 5px !important;
+    gap: 0 !important;
+  }
+}
+/* 
+   HEADER CHO MOBILE SIMULATOR (.mobile-wrapper)
+    */
+.mobile-wrapper .lv-navbar {
+  position: relative !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 10px !important;
+}
+
+.mobile-wrapper .lv-logo {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 16px !important;
+  letter-spacing: 2px !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+.mobile-wrapper .nav-text {
+  display: none !important;
+}
+
+.mobile-wrapper .nav-btn,
+.mobile-wrapper .nav-btn-icon {
+  padding: 8px 5px !important;
+  gap: 0 !important;
+}

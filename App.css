@@ -1,0 +1,375 @@
+/*vuốt vượt hơn (cuộn ngang) */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
+
+:root {
+  --lv-font-serif: "Playfair Display", serif;
+  --lv-font-sans: "Jost", sans-serif;
+  --lv-dark: #19110b;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--lv-font-sans);
+  background: #fff;
+  overflow-x: hidden;
+}
+
+.serif-font {
+  font-family: var(--lv-font-serif) !important;
+}
+.ls-2 {
+  letter-spacing: 2px;
+}
+.ls-8 {
+  letter-spacing: 8px;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.z-index-2 {
+  z-index: 2;
+  position: relative;
+}
+
+/* --- HEADER & LOGO --- */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lv-brand-title {
+  font-family: var(--lv-font-serif);
+  font-size: 24px;
+  letter-spacing: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.lv-hero {
+  height: calc(100vh - 70px);
+  min-height: 500px;
+  background: url("https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--Women_FlightMode_Apr24_DI3.jpg")
+    center/cover no-repeat;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.horizontal-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+}
+
+.product-card-item {
+  width: 280px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-img-container {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #f6f6f6;
+  border-radius: 2px;
+}
+
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.product-card-item:hover .product-card-img {
+  transform: scale(1.05);
+}
+.footer-dark-bg {
+  background-color: var(--lv-dark);
+  color: #767676;
+  padding: 80px 0 40px;
+}
+.footer-title {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+.footer-dark-bg a {
+  color: #767676;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.footer-big-logo {
+  font-size: 8rem;
+  opacity: 0.15;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  letter-spacing: 20px;
+}
+
+@media (max-width: 991px) {
+  .sticky-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    min-height: 60px;
+  }
+
+  .lv-brand-title {
+    font-size: 14px !important;
+    letter-spacing: 2px !important;
+    white-space: nowrap; /* Chống rớt dòng */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+  .small-label,
+  .d-lg-block {
+    display: none !important;
+  }
+
+  /* SẢN PHẨM TRƯỢT NGANG */
+  .horizontal-scroll {
+    gap: 12px !important;
+    padding: 0 15px;
+    scroll-snap-type: x mandatory;
+  }
+  /* chỉnh sản phẩm */
+  .product-card-item {
+    width: 90vw !important;
+    flex: 0 0 90vw !important;
+    scroll-snap-align: start;
+  }
+  .product-img-container {
+    aspect-ratio: 1 / 1 !important;
+  }
+  .product-name {
+    font-size: 13px !important;
+    margin-top: 8px;
+  }
+  .footer-dark-bg {
+    padding: 40px 0 20px;
+  }
+  .footer-dark-bg .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 !important;
+  }
+  .footer-dark-bg [class*="col-"] {
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+    margin-bottom: 40px;
+    padding: 0 15px !important;
+  }
+  .footer-dark-bg a {
+    line-height: 2 !important;
+    font-size: 13px;
+  }
+  .footer-big-logo {
+    font-size: 3rem !important;
+    letter-spacing: 10px;
+    margin-top: 20px;
+  }
+}
+.mobile-wrapper header button,
+.mobile-wrapper header a.nav-link {
+  font-size: 0 !important;
+}
+.mobile-wrapper header button svg,
+.mobile-wrapper header button i,
+.mobile-wrapper header a.nav-link svg,
+.mobile-wrapper header a.nav-link i {
+  font-size: 20px !important;
+}
+/* Ép logo căn giữa tuyệt đối */
+.mobile-wrapper header .lv-logo,
+.mobile-wrapper header h1 {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  margin: 0 !important;
+}
+
+/* HEADER: LOGO VÀ CHỮ MENU/TÌM KIẾM */
+.mobile-wrapper .navbar {
+  position: relative !important;
+  min-height: 60px;
+  padding: 0 15px !important;
+}
+
+/* Đưa logo ra giữa tuyệt đối */
+.mobile-wrapper .lv-brand-title {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 15px !important;
+  letter-spacing: 2px !important;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+.mobile-wrapper .d-lg-block.small-label,
+.mobile-wrapper .navbar .small-label {
+  display: none !important;
+}
+
+/*  HÌNH ẢNH SẢN PHẨM (Kích cỡ chuẩn cho cả 2 màn hình) */
+.product-img-container {
+  aspect-ratio: 4 / 5;
+  background: #f6f6f6;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giúp ảnh lấp đầy khung mà không bị bóp méo */
+  object-position: center;
+}
+
+/* Responsive: Ép kích thước ảnh trên Simulator Mobile */
+.mobile-wrapper .horizontal-scroll {
+  gap: 12px !important;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.mobile-wrapper .product-card-item {
+  width: 90vw !important;
+  flex: 0 0 90vw !important;
+}
+.mobile-wrapper .product-img-container {
+  aspect-ratio: 1 / 1 !important;
+}
+.mobile-wrapper .product-name {
+  font-size: 13px !important;
+  margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mobile-wrapper .footer-dark-bg .row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+
+.mobile-wrapper .footer-dark-bg .row > div[class*="col-"] {
+  width: 50% !important; /* Chia gọn thành 2 cột */
+  max-width: 50% !important;
+  flex: 0 0 50% !important;
+  margin-bottom: 30px !important;
+  text-align: left !important;
+  padding: 0 10px !important;
+}
+
+/* Tách riêng phần VIỆT NAM xuống hàng cuối cùng cho đẹp */
+.mobile-wrapper .footer-dark-bg .row > div:last-child {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  text-align: center !important;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px !important;
+}
+
+.mobile-wrapper .footer-logo-wrap h2 {
+  font-size: 26px !important;
+  letter-spacing: 6px !important;
+}
+.mobile-wrapper .d-lg-none {
+  display: inline-block !important;
+  font-size: 20px !important; /* Chỉnh size icon tài khoản cho bằng icon trái tim */
+}
+.mobile-wrapper .navbar > .d-flex > div[style*="gap: 15px"] {
+  gap: 10px !important;
+}
+.mobile-wrapper .lv-burger {
+  margin-top: -2px;
+}
+.mobile-wrapper .fs-4 {
+  font-size: 20px !important;
+}
+/* 1. Đưa ảnh về chế độ Contain (Hiển thị trọn vẹn, không cắt xén) */
+.mobile-wrapper .product-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  padding: 15px !important;
+}
+.mobile-wrapper .product-img-container {
+  aspect-ratio: 4 / 5 !important;
+  background-color: #f6f6f6 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-wrapper .product-card-item {
+  width: 45% !important;
+  flex: 0 0 45% !important;
+}
+
+/* Căn chỉnh lại tên sản phẩm cho gọn */
+.mobile-wrapper .product-name {
+  font-size: 12px !important;
+  white-space: normal !important; /* Cho phép rớt dòng nếu tên quá dài */
+  line-height: 1.4 !important;
+}
+/* 
+   THÊM HÌNH NỀN CHO TOÀN BỘ TRANG WEB (PHÍA SAU ĐIỆN THOẠI)
+    */
+.App {
+  background-image: url("https://www.louisvuitton.com/images/is/image/lv/Women_FLIGHT_MODE26_Asset4_DI3.jpg?wid=2400") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Tùy chọn: Làm mờ nhẹ hình nền để khung điện thoại nổi bật hơn */
+.App::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Lớp phủ màu đen mờ 40% */
+  z-index: 0;
+}
+
+.App > * {
+  position: relative;
+  z-index: 1; /* Đảm bảo điện thoại và bảng điều khiển nổi lên trên lớp mờ */
+}
+/*  hiển thị 1 cột cho toàn bộ thẻ sản phẩm */
+/*body .desktop-wrapper .horizontal-scroll .product-card-item,
+body .mobile-wrapper .horizontal-scroll .product-card-item,
+.horizontal-scroll .product-card-item {
+  width: 45vw !important;
+  flex: 0 0 45vw !important;
+  max-width: 45vw !important;
+}*/
